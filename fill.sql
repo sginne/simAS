@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS Routers;
 DROP TABLE IF EXISTS Ports;
-DROP TABLE IF EXISTS Packets;
+DROP TABLE IF EXISTS Packages;
 CREATE TABLE `Routers` (
 	`Id`	INTEGER NOT NULL UNIQUE,
 	`Name`	TEXT UNIQUE,
@@ -18,7 +18,7 @@ INSERT INTO `Ports` (Id,Router_Id,Ip) VALUES (1,1,'192.168.0.1');
 INSERT INTO `Ports` (Id,Router_Id,Ip) VALUES (2,1,'192.168.0.2');
 INSERT INTO `Ports` (Id,Router_Id,Ip) VALUES (3,2,'192.168.0.3');
 INSERT INTO `Ports` (Id,Router_Id,Ip) VALUES (4,1,'192.168.0.4');
-CREATE TABLE `Packets` (
+CREATE TABLE `Packages` (
    `Id`	INTEGER NOT NULL UNIQUE,
 	`Position` TEXT,
 	`Version` INTEGER,
