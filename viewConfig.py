@@ -7,14 +7,8 @@ import database
 
 if __name__ == '__main__':
     DbObject=database
-    routers=DbObject.ListRouters()
-    ports=DbObject.ListPorts("")
-    for router in routers:
-        print ("We've got router with id {}, by the name {}".format(router.Id,router.Name))
-        print ("Belonging ports:")
-        ports=DbObject.ListPorts("")
-        for port in ports:
-            if port.RouterId==router.Id:
-                print("Port id={}, with IP={}".format(port.Id,port.Ip))
-       
-       
+    network=database.Network() #network initialisation
+    for i in network.Routers: #after network initialized, we have list of Routers, iterating 
+        print ("There is router {}, name is {}. Ports:".format(i.Id,i.Name))
+        for j in i.Ports: #network.Routers[x].Ports has Port in Ports[x] list
+            print("--PortId={}, which belongs to {} and has IP={}".format(j.Id,j.RouterId,j.Ip))
