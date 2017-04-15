@@ -1,6 +1,9 @@
 # simAS
 simAS Group work for Protocol Processing course
 
+15.4, Timo  
+Table Packets added to SQL, file zeija removed
+
 2.4, Timo  
 Removed database from package to module. It is not that big project.  
 
