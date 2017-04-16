@@ -47,7 +47,9 @@ class Wire(object):
     Id=0
     Port1Id=0
     Port2Id=0
-def InitSQL(FileName):
+    
+#database initialization and sql command execution.
+def InitSQL(FileName): 
     DbConnection = sqlite3.connect('main.db')
     DbCursor=DbConnection.cursor()
     DatabaseFile=open(FileName,'r')
@@ -58,6 +60,8 @@ def InitSQL(FileName):
         DbCursor.execute(command)
     DbConnection.commit()
     DbConnection.close()
+    
+# Loading all ports available for each router.
 def ListPorts(Where=''):
     out=[]
     DbConnection = sqlite3.connect('main.db')
@@ -72,7 +76,7 @@ def ListPorts(Where=''):
     DbConnection.close()
     return out
     
-    
+# Load the list of routers conneted from database.    
 def ListRouters(Where=''):
     out=[]
     DbConnection = sqlite3.connect('main.db')
