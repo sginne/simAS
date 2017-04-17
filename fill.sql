@@ -7,8 +7,9 @@ CREATE TABLE `Routers` (
 	`Name`	TEXT UNIQUE,
 	PRIMARY KEY(Id)
 );
-INSERT INTO `Routers` (Id,Name) VALUES (1,'R1');
-INSERT INTO `Routers` (Id,Name) VALUES (2,'R2');
+INSERT INTO `Routers` (Id,Name) VALUES (1,'First');
+INSERT INTO `Routers` (Id,Name) VALUES (2,'Second');
+INSERT INTO `Routers` (Id,Name) VALUES (3,'Third');
 CREATE TABLE `Ports` (
 	`Id`	INTEGER NOT NULL UNIQUE,
 	`Router_Id`	INTEGER,
@@ -17,8 +18,11 @@ CREATE TABLE `Ports` (
 );
 INSERT INTO `Ports` (Id,Router_Id,Ip) VALUES (1,1,'192.168.0.1');
 INSERT INTO `Ports` (Id,Router_Id,Ip) VALUES (2,1,'192.168.0.2');
-INSERT INTO `Ports` (Id,Router_Id,Ip) VALUES (3,2,'192.168.0.3');
-INSERT INTO `Ports` (Id,Router_Id,Ip) VALUES (4,1,'192.168.0.4');
+INSERT INTO `Ports` (Id,Router_Id,Ip) VALUES (3,1,'192.168.0.3');
+INSERT INTO `Ports` (Id,Router_Id,Ip) VALUES (4,2,'192.168.0.4');
+INSERT INTO `Ports` (Id,Router_Id,Ip) VALUES (5,2,'192.168.0.5');
+INSERT INTO `Ports` (Id,Router_Id,Ip) VALUES (6,3,'192.168.0.6');
+INSERT INTO `Ports` (Id,Router_Id,Ip) VALUES (7,3,'192.168.0.7');
 CREATE TABLE `Packages` (
    `Id`	INTEGER NOT NULL UNIQUE,
 	`Position` TEXT,
@@ -42,4 +46,6 @@ CREATE TABLE `Wires` (
 	`Port1Id`	INTEGER,
 	`Port2Id`	INTEGER
 );
-INSERT INTO `Wires` (Id,Port1Id,Port2Id) VALUES (1,1,3);
+INSERT INTO `Wires` (Id,Port1Id,Port2Id) VALUES (1,2,4);
+INSERT INTO `Wires` (Id,Port1Id,Port2Id) VALUES (2,3,6);
+

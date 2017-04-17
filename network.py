@@ -1,6 +1,5 @@
 from router import Router
 from port import Port
-from wire import Wire
 import database
 
 class Network(object):
@@ -51,17 +50,6 @@ class Network(object):
                 self.Id=Id
                 self.RouterId=RouterId
                 self.Ip=Ip
-            def belongsto(self,PortId): #Returns Router.Id of Port
-                for PortObject in database.ListPorts(): #not elegant, but works
-                    if (PortObject.Id==PortId):
-                        return PortObject.RouterId
-                return None
-            def portsip(self,PortId):
-                for PortObject in database.ListPorts():
-                    if (PortObject.Id==PortId):
-                        return PortObject.Ip
-                return None
-                    
                 
                 
                 
