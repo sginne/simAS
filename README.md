@@ -2,6 +2,9 @@
 simAS Group work for Protocol Processing course
 
 17.4, Timo  
+Almost everything now is interfaced properly. Object of class Port has *connected_to* and *belongs_to_router*. Naming convention changed to pythonish from javaish
+
+17.4, Timo  
 Reworked database.py, created wire, router, port and network modules. database.py is just collection of functions, wire, router, port and network are modules with classes in them.  
 Logic of network is naturally in network.py module  
 *Updated executable(main) scripts to start with Caps. At the moment ViewConfig.py and InitDb.py*
