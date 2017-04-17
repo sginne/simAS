@@ -27,9 +27,9 @@ class Network(object):
     def port_is_connected_to(self,PortId):
         for wire in database.ListWires():
             if (wire.Port1Id==PortId):
-                return self.port_by_id(wire.Port2Id)
+                return self.port_by_id(Network,wire.Port2Id)
             elif (wire.Port2Id==PortId):
-                return self.port_by_id(wire.Port1Id)
+                return self.port_by_id(Network,wire.Port1Id)
         return None
 
                     
@@ -50,6 +50,8 @@ class Network(object):
                 self.Id=Id
                 self.RouterId=RouterId
                 self.Ip=Ip
-                
-                
+            def connected_to(self):
+                return Network.port_is_connected_to(Network,self.Id)
+            def belongs_to_router(self):                
+                return Network.router_by_port_id(Network,self.Id)
                 
