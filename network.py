@@ -22,7 +22,7 @@ class Network(object):
             return ReturnId
                     
     class Router(Router): #Network.Router inherits Router from router.py and adds constructor __init__
-        Ports=[]
+        Ports=[] #Again, ports do not belong to network per se, they belong to router       
         def __init__(self,Id,Name):
             self.Id=Id
             self.Name=Name
