@@ -43,6 +43,11 @@ class Network(object):
                     if (PortObject.Id==PortId):
                         return PortObject.RouterId
                 return None
+            def portsip(self,PortId):
+                for PortObject in database.ListPorts():
+                    if (PortObject.Id==PortId):
+                        return PortObject.Ip
+                return None
                     
                 
                 
