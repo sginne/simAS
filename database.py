@@ -7,6 +7,7 @@ import sqlite3
 from router import Router
 from port import Port
 from wire import Wire
+from package import Package
 DbConnection = None
 DbCursor= None
 
@@ -61,6 +62,18 @@ def ListWires(Where=''):
         Obj.Id=row[0]
         Obj.Port1Id=row[1]
         Obj.Port2Id=row[2]
+        out.append(Obj)
+    DbConnection.close()
+    return out
+def ListPackages(Where=''):
+    out=[]
+    DbConnection = sqlite3.connect('main.db')
+    DbCursor=DbConnection.cursor()
+    for row in DbCursor.execute("SELECT * FROM PACKAGES "+Where).fetchall():
+        Obj=Wire()
+        Obj.Id=row[0]
+        Obj.Position=row[1]
+        Obj.Destination=row[14]
         out.append(Obj)
     DbConnection.close()
     return out
