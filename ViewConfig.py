@@ -16,3 +16,4 @@ if __name__ == '__main__': #actually IDE added it. not really necessary
             print("--PortId={}, which belongs to {} and has IP={}".format(port.Id,port.RouterId,port.Ip))
             if Network.Wire.connected(port.Id): #Network.Wire.connected takes port id as argument, returns None if itsnt connected, or portid it leads to
                 print ("----PortId={} is connected to PortId={}".format(port.Id,Network.Wire.connected(port.Id)))
+                print ("----Which in turn belongs to RouterId {}".format(port.belongsto((Network.Wire.connected(port.Id)))))
