@@ -41,6 +41,8 @@ CREATE TABLE `Packages` (
 	`Destination` INTEGER,
 	PRIMARY KEY(Id)
 );
+INSERT INTO `Packages` (Position,Destination) VALUES ('i.P1.R1',3232235625);
+INSERT INTO `Packages` (Position,Destination) VALUES ('i.P1.R1',3232235627);
 CREATE TABLE `Wires` (
 	`Id`	INTEGER NOT NULL UNIQUE,
 	`Port1Id`	INTEGER,
@@ -48,4 +50,3 @@ CREATE TABLE `Wires` (
 );
 INSERT INTO `Wires` (Id,Port1Id,Port2Id) VALUES (1,2,4);
 INSERT INTO `Wires` (Id,Port1Id,Port2Id) VALUES (2,3,6);
-
