@@ -14,7 +14,6 @@ if __name__ == '__main__': #actually IDE added it. not really necessary
         print ("There is router {}, name is {}. Ports:".format(router.Id,router.Name))
         for port in router.Ports: #network.Routers[x].Ports has Port in Ports[x] list
             print("--PortId={}, which belongs to {} and has IP={}".format(port.Id,port.RouterId,port.Ip))
-            if Network.Wire.connected(port.Id): #Network.Wire.connected takes port id as argument, returns None if itsnt connected, or portid it leads to
-                print ("----PortId={} is connected to PortId={}".format(port.Id,Network.Wire.connected(port.Id)))
-                print ("----Which in turn belongs to RouterId {}. Ports IP is {}".format(port.belongsto((Network.Wire.connected(port.Id))),port.portsip((Network.Wire.connected(port.Id)))))
-                print ("----{}<->{}".format(port.Ip,port.portsip((Network.Wire.connected(port.Id)))))
+            connected_port=network.port_is_connected_to(port.Id)
+            if connected_port:
+                print ("----Is connected to port {}, with IP {} which belongs to {}".format(connected_port.Id,connected_port.Ip,network.router_by_port_id(connected_port.Id).Name))

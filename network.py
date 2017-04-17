@@ -8,18 +8,31 @@ class Network(object):
     def __init__(self): #Using ListRouters function from database.py we initialize Routers[] list with routers from db
         for RouterObject in database.ListRouters():
             self.Routers.append(self.Router(RouterObject.Id,RouterObject.Name))
-    class Wire(Wire):
-        def connected(PortId): #no self, not going to make object
-            ConnectedId=PortId
-            ReturnId=None
-            for wire in database.ListWires():
-                if (PortId==wire.Port1Id):
-                    ConnectedId=wire.Port2Id
-                elif (PortId==wire.Port2Id):
-                    ConnectedId=wire.Port1Id
-            if (ConnectedId!=PortId):
-                ReturnId=ConnectedId
-            return ReturnId
+    def router_by_id(self,Id): #return Router object from Network.Routers[] by id or None if none
+        for iterate_router in self.Routers:
+            if (iterate_router.Id==Id):
+                return iterate_router
+        return None
+    def router_by_port_id(self,PortId):
+        for iterate_router in self.Routers:
+            for iterate_port in iterate_router.Ports:
+                if (iterate_port.Id==PortId):
+                    return iterate_router
+        return None
+    def port_by_id(self,PortId):
+        for iterate_router in self.Routers:
+            for iterate_port in iterate_router.Ports:
+                if (iterate_port.Id==PortId):
+                    return iterate_port
+        return None
+    def port_is_connected_to(self,PortId):
+        for wire in database.ListWires():
+            if (wire.Port1Id==PortId):
+                return self.port_by_id(wire.Port2Id)
+            elif (wire.Port2Id==PortId):
+                return self.port_by_id(wire.Port1Id)
+        return None
+
                     
     class Router(Router): #Network.Router inherits Router from router.py and adds constructor __init__
         Ports=[] #Again, ports do not belong to network per se, they belong to router       
