@@ -4,12 +4,12 @@ from wire import Wire
 import database
 
 class Network(object):
-    Routers=[]
-    def __init__(self):
+    Routers=[] #Network object is going to be instantiated and contain routers in Routers[] list of objects
+    def __init__(self): #Using ListRouters function from database.py we initialize Routers[] list with routers from db
         for RouterObject in database.ListRouters():
             self.Routers.append(self.Router(RouterObject.Id,RouterObject.Name))
     class Wire(Wire):
-        def connected(PortId):
+        def connected(PortId): #no self, not going to make object
             ConnectedId=PortId
             ReturnId=None
             for wire in database.ListWires():
@@ -21,7 +21,7 @@ class Network(object):
                 ReturnId=ConnectedId
             return ReturnId
                     
-    class Router(Router):
+    class Router(Router): #Network.Router inherits Router from router.py and adds constructor __init__
         Ports=[]
         def __init__(self,Id,Name):
             self.Id=Id
@@ -32,7 +32,8 @@ class Network(object):
                 if (PortObject.RouterId==self.Id):
                     #self.Ports.append('a')                   
                     self.Ports.append(self.Port(PortObject.Id,PortObject.RouterId,PortObject.Ip))
-        class Port(Port):
+                    
+        class Port(Port): #Network.Router.Prt inherits Port from port.py and adds constructor __init__
             def __init__(self,Id,RouterId,Ip):
                 self.Id=Id
                 self.RouterId=RouterId

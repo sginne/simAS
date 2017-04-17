@@ -9,6 +9,7 @@ from network import Network
 if __name__ == '__main__': #actually IDE added it. not really necessary
     DbObject=database #module(but not class) to work with database. Included into database.py
     network=Network() #network initialisation
+    
     for router in network.Routers: #after network initialized, we have list of Routers, iterating 
         print ("There is router {}, name is {}. Ports:".format(router.Id,router.Name))
         for port in router.Ports: #network.Routers[x].Ports has Port in Ports[x] list
