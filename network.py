@@ -12,19 +12,19 @@ class Network(object):
             if (iterate_router.Id==Id):
                 return iterate_router
         return None
-    def router_by_port_id(self,PortId):
+    def router_by_port_id(self,PortId): #returns Router object by port id, to which it belongs, bit ineffective, but will do.
         for iterate_router in self.Routers:
             for iterate_port in iterate_router.Ports:
                 if (iterate_port.Id==PortId):
                     return iterate_router
         return None
-    def port_by_id(self,PortId):
+    def port_by_id(self,PortId): #returns Port object bu port id
         for iterate_router in self.Routers:
             for iterate_port in iterate_router.Ports:
                 if (iterate_port.Id==PortId):
                     return iterate_port
         return None
-    def port_is_connected_to(self,PortId):
+    def port_is_connected_to(self,PortId): #returns port object to which port_id is connected
         for wire in database.ListWires():
             if (wire.Port1Id==PortId):
                 return self.port_by_id(Network,wire.Port2Id)
@@ -50,8 +50,8 @@ class Network(object):
                 self.Id=Id
                 self.RouterId=RouterId
                 self.Ip=Ip
-            def connected_to(self):
+            def connected_to(self): #function of Port object, returns Port object to which Port is connected
                 return Network.port_is_connected_to(Network,self.Id)
-            def belongs_to_router(self):                
+            def belongs_to_router(self): #returns Router object, master of Port.               
                 return Network.router_by_port_id(Network,self.Id)
                 
