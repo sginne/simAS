@@ -1,6 +1,10 @@
 # simAS
 simAS Group work for Protocol Processing course
 
+17.4, Timo  
+Reworked database.py, created wire, router, port and network modules. database.py is just collection of functions, wire, router, port and network are modules with classes in them.  
+Logic of network is naturally in network.py module
+
 15.4, Timo  
 Table Packets added to SQL, file zeija removed
 
