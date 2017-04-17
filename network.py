@@ -38,3 +38,12 @@ class Network(object):
                 self.Id=Id
                 self.RouterId=RouterId
                 self.Ip=Ip
+            def belongsto(self,PortId): #Returns Router.Id of Port
+                for PortObject in database.ListPorts(): #not elegant, but works
+                    if (PortObject.Id==PortId):
+                        return PortObject.RouterId
+                return None
+                    
+                
+                
+                
